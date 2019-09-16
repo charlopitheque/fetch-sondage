@@ -13,8 +13,10 @@ export class UsersService {
     ) {
     }
 
-    findOne(email: string): Promise<User[]> {
-        return this.userRepository.find({where: {email}, take: 1});
+    async findOne(email: string): Promise<User[]> {
+        const user =  await this.userRepository.find({where: {email}, take: 1});
+        console.log(user);
+        return user;
     }
 
     create(user: User): any {
